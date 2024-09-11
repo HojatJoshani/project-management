@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { getProjects } from "../controllers/projectController";
+import { getTasks } from "../controllers/taskController";
+
 
 const router = Router();
 
-router.get("/", getProjects);
+router.get("/", getTasks);
 
 export default router;

@@ -9,10 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getProjects = void 0;
+exports.getTasks = void 0;
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
-const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { projectId } = req.query;
     try {
         const tasks = yield prisma.task.findMany({
@@ -34,4 +34,4 @@ const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             .json({ message: `خطا در دریافت پروژه ها:  ${error.message}` });
     }
 });
-exports.getProjects = getProjects;
+exports.getTasks = getTasks;
