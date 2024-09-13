@@ -10,7 +10,7 @@ const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 /* ROUTE IMPORTS */
-const projectController_1 = require("./controllers/projectController");
+const projectRoutes_1 = __importDefault(require("./routes/projectRoutes"));
 /* CONFIGURATIONS */
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -25,7 +25,7 @@ app.use((0, cors_1.default)());
 app.get("/", (req, res) => {
     res.send("این مسیر صفحه اصلی است");
 });
-app.use("/projects", projectController_1.getProjects);
+app.use("/projects", projectRoutes_1.default);
 /* SERVER */
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

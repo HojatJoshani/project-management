@@ -6,7 +6,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 
 /* ROUTE IMPORTS */
-import { getProjects } from "./controllers/projectController";
+import projectRoutes from "./routes/projectRoutes";
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   res.send("این مسیر صفحه اصلی است");
 });
 
-app.use("/projects", getProjects);
+app.use("/projects", projectRoutes);
 
 /* SERVER */
 const port = process.env.PORT || 3000;
