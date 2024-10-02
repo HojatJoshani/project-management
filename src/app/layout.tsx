@@ -1,21 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import DashboardWrapper from "./dashboardWrapper";
 
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
 const vazirFont = localFont({
-    src: "./fonts/Vazirmatn-Medium.woff2",
-    weight: "100 900",
-  });
+  src: "./fonts/Vazirmatn-Medium.woff2",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "نرم افزار مدیریت پروژه",
@@ -29,10 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html dir="rtl" lang="en">
-      <body
-        className={`${vazirFont.className} antialiased`}
-      >
-        {children}
+      <body className={`${vazirFont.className} antialiased`}>
+        <DashboardWrapper>{children}</DashboardWrapper>
       </body>
     </html>
   );
