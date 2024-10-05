@@ -4,7 +4,7 @@ import "./globals.css";
 import DashboardWrapper from "./dashboardWrapper";
 
 const vazirFont = localFont({
-  src: "./fonts/Vazirmatn-Medium.woff2",
+  src: "../../public/fonts/Vazirmatn-Medium.woff2",
   weight: "100 900",
 });
 
