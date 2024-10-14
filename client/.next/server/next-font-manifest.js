@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/home/hojat/00 Hojat's Career/Programming/03 - 2024 Hosted on Vercel/project-management/client/src/app/layout\":[\"static/media/2c8554bdab87ece2-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
