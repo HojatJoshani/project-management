@@ -7,6 +7,7 @@ export const getProjects = async (
   req: Request,
   res: Response
 ): Promise<void> => {
+    const {projectId} = req.query;
   try {
     const projects = await prisma.project.findMany();
     res.json(projects);
