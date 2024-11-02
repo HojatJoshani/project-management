@@ -6,6 +6,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 
 /* ROUTE IMPORTS */
+import { getProjects } from "./controllers/projectController";
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -23,8 +24,10 @@ app.get("/", (req, res) => {
   res.send("این مسیر صفحه اصلی است");
 });
 
+app.use("/projects", getProjects);
+
 /* SERVER */
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`سرور روی پورت ${port} فعال است.`)
-})
+  console.log(`سرور روی پورت ${port} فعال است.`);
+});
