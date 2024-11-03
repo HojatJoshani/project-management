@@ -15,8 +15,18 @@ const prisma = new client_1.PrismaClient();
 const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { projectId } = req.query;
     try {
-        const projects = yield prisma.project.findMany();
-        res.json(projects);
+        const tasks = yield prisma.task.findMany({
+            where: {
+                projectId: Number(projectId),
+            },
+            include: {
+                author: true,
+                assignee: true,
+                comments: true,
+                attachments: true,
+            },
+        });
+        res.json(tasks);
     }
     catch (error) {
         res.status(500).json({ message: "دریافت پروژها به مشکل روبرو شد." });
