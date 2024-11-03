@@ -29,7 +29,9 @@ const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.json(tasks);
     }
     catch (error) {
-        res.status(500).json({ message: "خطا در دریافت پروژه ها" });
+        res
+            .status(500)
+            .json({ message: `خطا در دریافت پروژه ها:  ${error.message}` });
     }
 });
 exports.getProjects = getProjects;
@@ -41,13 +43,15 @@ const createProject = (req, res) => __awaiter(void 0, void 0, void 0, function* 
                 name,
                 description,
                 startDate,
-                endDate
-            }
+                endDate,
+            },
         });
         res.status(201).json(newProject);
     }
     catch (error) {
-        res.status(500).json({ message: "خطا در ایجاد پروژه ها" });
+        res
+            .status(500)
+            .json({ message: `خطا در ایجاد پروژه ها: ${error.message}` });
     }
 });
 exports.createProject = createProject;
