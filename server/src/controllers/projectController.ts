@@ -7,24 +7,11 @@ export const getProjects = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { projectId } = req.query;
   try {
-    const tasks = await prisma.task.findMany({
-      where: {
-        projectId: Number(projectId),
-      },
-      include: {
-        author: true,
-        assignee: true,
-        comments: true,
-        attachments: true,
-      },
-    });
-    res.json(tasks);
+    const projects = await prisma.project.findMany();
+    res.json(projects);
   } catch (error: any) {
-    res
-      .status(500)
-      .json({ message: `خطا در دریافت پروژه ها:  ${error.message}` });
+    res.status(500).json({ message: `خطا در دریافت پروژه: ${error.message}` });
   }
 };
 
@@ -44,8 +31,6 @@ export const createProject = async (
     });
     res.status(201).json(newProject);
   } catch (error: any) {
-    res
-      .status(500)
-      .json({ message: `خطا در ایجاد پروژه ها: ${error.message}` });
+    res.status(500).json({ message: `خطا در ایجاد پروژه: ${error.message}` });
   }
 };

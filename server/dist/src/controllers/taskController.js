@@ -9,34 +9,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createProject = exports.getProjects = void 0;
+exports.getProjects = void 0;
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { projectId } = req.query;
     try {
-        const projects = yield prisma.project.findMany();
-        res.json(projects);
+        const tasks = yield prisma.task.findMany({
+            where: {
+                projectId: Number(projectId),
+            },
+            include: {
+                author: true,
+                assignee: true,
+                comments: true,
+                attachments: true,
+            },
+        });
+        res.json(tasks);
     }
     catch (error) {
-        res.status(500).json({ message: `خطا در دریافت پروژه: ${error.message}` });
+        res
+            .status(500)
+            .json({ message: `خطا در دریافت پروژه ها:  ${error.message}` });
     }
 });
 exports.getProjects = getProjects;
-const createProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, description, startDate, endDate } = req.body;
-    try {
-        const newProject = yield prisma.project.create({
-            data: {
-                name,
-                description,
-                startDate,
-                endDate,
-            },
-        });
-        res.status(201).json(newProject);
-    }
-    catch (error) {
-        res.status(500).json({ message: `خطا در ایجاد پروژه: ${error.message}` });
-    }
-});
-exports.createProject = createProject;
